@@ -1,0 +1,4 @@
+FROM openjdk:8
+EXPOSE 8006
+ADD /target/authentication.jar authentication.jar
+ENTRYPOINT ["java", "-jar","authentication.jar"]

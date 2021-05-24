@@ -1,0 +1,4 @@
+FROM openjdk:8
+EXPOSE 8005
+ADD /target/qrCode.jar qrCode.jar
+ENTRYPOINT ["java", "-jar", "qrCode.jar"]

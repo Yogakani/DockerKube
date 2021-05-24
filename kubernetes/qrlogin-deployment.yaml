@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qrlogin
+  labels:
+    app: qrlogin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qrlogin
+  template:
+    metadata:
+      labels:
+        app: qrlogin
+    spec:
+      containers:
+        - name: qrlogin
+          image: yogakani10/qrlogin
+          ports:
+            - containerPort: 8085
+          env:
+            - name: spring.datasource.url
+              value: jdbc:postgresql://postgres-service:5432/yogakani
+            - name: auth.host
+              value: auth-service
+            - name: auth.port
+              value: "8090"
+            - name: kafka.host
+              value: kafka-service
+            - name: kafka.port
+              value: "9092"

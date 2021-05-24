@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-ui
+  labels:
+    app: login-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: login-ui
+  template:
+    metadata:
+      labels:
+        app: login-ui
+    spec:
+      containers:
+        - name: login-ui
+          image: yogakani10/login-ui
+          ports:
+            - containerPort: 80

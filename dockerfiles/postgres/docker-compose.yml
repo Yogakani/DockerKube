@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+  db:
+    container_name: postgres_container
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: yogakani
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: yogakani
+    ports:
+      - "5431:5431"
+    volumes:
+      - pg_data:/var/lib/postgresql/data/
+
+volumes:
+  pg_data:

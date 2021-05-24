@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+  labels:
+    app: product
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+        - name: product
+          image: yogakani10/product
+          ports:
+            - containerPort: 8095
+          env:
+            - name: spring.data.mongodb.port
+              value: "27017"
+            - name: spring.data.mongodb.host
+              value: mongodb
+            - name: spring.data.mongodb.database
+              value: "yoga"
+            - name: auth.host
+              value: auth-service
+            - name: auth.port
+              value: "8090"
